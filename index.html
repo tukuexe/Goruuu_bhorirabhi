@@ -1,13 +1,60 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Home</title>
-   </head>
-   <body>
-       <h1>Toi goruuu, gahori, suarr... ainat sage ja kukur lagiso</h1>
-       <p>This is the home page.</p>
-       <a href="/about">tuku.exe</a>
-   </body>
-   </html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Motion Detection Bot</title>
+  <!-- Bootstrap CSS for a nicer UI -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body { padding: 20px; }
+    #videoElement { width: 100%; max-width: 640px; }
+    #canvasOutput { display: none; } /* Uncomment to debug processed frames */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Advanced Motion Detection Bot</h1>
+    
+    <!-- Login Section (password protected) -->
+    <div id="loginSection">
+      <h3>Password Protected Access</h3>
+      <div class="form-group">
+        <input type="password" id="passwordInput" class="form-control" placeholder="Enter password">
+      </div>
+      <button id="loginBtn" class="btn btn-primary">Login</button>
+      <div id="loginError" class="text-danger mt-2"></div>
+    </div>
+    
+    <!-- Motion Detection & Settings Section -->
+    <div id="motionSection" style="display:none;">
+      <h3>Motion Detection Configuration</h3>
+      <div class="form-group">
+        <label for="sensitivityRange">Sensitivity:</label>
+        <input type="range" class="form-control-range" id="sensitivityRange" min="1" max="100" value="20">
+      </div>
+      <div class="form-group">
+        <label for="toggleDetection">Enable Motion Detection:</label>
+        <input type="checkbox" id="toggleDetection" checked>
+      </div>
+      <h4>Telegram Bot Settings</h4>
+      <div class="form-group">
+        <input type="text" id="telegramToken" class="form-control" placeholder="Enter Telegram Bot Token">
+      </div>
+      <div class="form-group">
+        <input type="text" id="telegramChatId" class="form-control" placeholder="Enter Telegram Chat ID">
+      </div>
+      <button id="updateSettings" class="btn btn-secondary mb-3">Update Settings</button>
+      
+      <h4>Video Feed</h4>
+      <video id="videoElement" autoplay playsinline></video>
+      <canvas id="canvasOutput"></canvas>
+      <div id="statusMessage" class="mt-3"></div>
+    </div>
+  </div>
+  
+  <!-- OpenCV.js (loads asynchronously) -->
+  <script async src="https://docs.opencv.org/4.x/opencv.js" type="text/javascript"></script>
+  <!-- Custom script -->
+  <script src="script.js"></script>
+</body>
+</html>
